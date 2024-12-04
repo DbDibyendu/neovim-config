@@ -13,6 +13,7 @@ plugins=(git zsh-autosuggestions)
 source $ZSH/oh-my-zsh.sh
 source ~/.nvm/nvm.sh
 
+
 # Aliases
 alias y-mweb="yarn workspace website dev-mweb"
 alias y-web="yarn workspace website dev"
