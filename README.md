@@ -4,7 +4,7 @@
 
 
 ### Install [Homebrew](https://brew.sh/) as package manager 
-
+You can download all the cli tools from here https://www.josean.com/posts/7-amazing-cli-tools
 ### Stow 
 Download `Stow` to get symlink the dotfiles to $HOME. 
 
