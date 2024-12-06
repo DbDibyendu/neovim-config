@@ -13,10 +13,20 @@ return {
 		local actions = require("telescope.actions")
 
 		-- or create your custom action
+		local actions = require("telescope.actions")
+		local action_state = require("telescope.actions.state")
+		local api = require("nvim-tree.api")
 
 		telescope.setup({
 			defaults = {
-				path_display = { "smart" },
+				path_display = function(_, path)
+					local parts = vim.split(path, "/")
+					local depth = 6 -- Maximum depth to display
+					if #parts > depth then
+						return table.concat(parts, "/", #parts - depth + 1)
+					end
+					return path
+				end,
 				mappings = {
 					i = {
 						["<C-k>"] = actions.move_selection_previous, -- move to prev result
