@@ -24,7 +24,6 @@ return {
 			ensure_installed = {
 				"json",
 				"go",
-				"protobuf",
 				"proto",
 				"javascript",
 				"typescript",

@@ -3,6 +3,7 @@ return {
 	branch = "0.1.x",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
+		"nvim-telescope/telescope-dap.nvim",
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 		"nvim-tree/nvim-web-devicons",
 		"folke/todo-comments.nvim",
@@ -10,13 +11,10 @@ return {
 	lazy = false,
 	config = function()
 		local telescope = require("telescope")
-		local actions = require("telescope.actions")
 
 		-- or create your custom action
 		local actions = require("telescope.actions")
-		local action_state = require("telescope.actions.state")
-		local api = require("nvim-tree.api")
-
+		require("telescope").load_extension("dap")
 		telescope.setup({
 			defaults = {
 				path_display = function(_, path)

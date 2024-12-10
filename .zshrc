@@ -83,3 +83,5 @@ cyan="#2CF9ED"
 export FZF_DEFAULT_OPTS="--color=fg:${fg},bg:${bg},hl:${purple},fg+:${fg},bg+:${bg_highlight},hl+:${purple},info:${blue},prompt:${cyan},pointer:${cyan},marker:${cyan},spinner:${cyan},header:${cyan}"
 
 source ~/fzf-git.sh/fzf-git.sh
+
+export BINDER_REPO_PATH="/Users/dibyendu.biswas/project/subs-pay/hs-core-widget-binder-query"
