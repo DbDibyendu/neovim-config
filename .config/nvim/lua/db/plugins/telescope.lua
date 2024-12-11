@@ -6,7 +6,6 @@ return {
 		"nvim-telescope/telescope-dap.nvim",
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 		"nvim-tree/nvim-web-devicons",
-		"folke/todo-comments.nvim",
 	},
 	lazy = false,
 	config = function()

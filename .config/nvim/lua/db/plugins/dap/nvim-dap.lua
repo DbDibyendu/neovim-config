@@ -23,7 +23,41 @@ return {
 
 		-- Setup DAP UI
 		local dapui = require("dapui")
-		dapui.setup()
+
+		dapui.setup({
+			layouts = {
+				{
+					-- Left sidebar layout for scopes, breakpoints, etc.
+					elements = {
+						{ id = "scopes", size = 0.25 },
+						{ id = "breakpoints", size = 0.25 },
+						{ id = "stacks", size = 0.25 },
+						{ id = "watches", size = 0.25 },
+					},
+					size = 40, -- Width of the sidebar
+					position = "left", -- Position of the sidebar (left, right)
+				},
+				{
+					-- Bottom layout for repl and console
+					elements = {
+						{ id = "repl", size = 0.5 },
+						{ id = "console", size = 0.5 },
+					},
+					size = 10, -- Height of the bottom window
+					position = "bottom", -- Position of the bottom layout (bottom, top)
+				},
+			},
+			floating = {
+				width = 2,
+				max_width = 17, -- Adjust the max width of floating windows
+				max_height = 5, -- Adjust the max height of floating windows
+				border = "double", -- Border style: single, double, rounded, none
+				mappings = {
+					close = { "q", "<Esc>" }, -- Keymaps to close floating windows
+				},
+			},
+			windows = { indent = 1 }, -- Indentation for tree-like elements
+		})
 
 		-- Automatically open the DAP UI when the debugging session begins
 		dap.listeners.before.attach.dapui_config = function()
@@ -50,7 +84,7 @@ return {
 		vim.keymap.set("n", "<leader>zt", ":lua require('dap').terminate()<CR>", { desc = "Terminate" })
 		vim.keymap.set("n", "<leader>zo", ":lua require('dap').step_over()<CR>", { desc = "Step Over" })
 		vim.keymap.set("n", "<leader>zi", ":lua require('dap').step_into()<CR>", { desc = "Step Into" })
-		vim.keymap.set("n", "<leader>zoo", ":lua require('dap').step_out()<CR>", { desc = "Step Out" })
+		vim.keymap.set("n", "<leader>zq", ":lua require('dap').step_out()<CR>", { desc = "Step Out" })
 		vim.keymap.set(
 			"n",
 			"<leader><F3>",

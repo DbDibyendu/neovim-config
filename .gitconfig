@@ -1,0 +1,12 @@
+[user]
+	name = Dibyendu
+	email = dibyendu.biswas@hotstar.com
+
+
+[alias]
+    openfile = "!f() { \
+        branch=$(git rev-parse --abbrev-ref HEAD); \
+        file=$1; \
+        repo=$(git remote get-url origin | sed 's/:/\\//; s/^git@/https:\\/\\//; s/\\.git$//'); \
+        open -a 'Google Chrome' \"$repo/blob/$branch/$file\"; \
+    }; f"

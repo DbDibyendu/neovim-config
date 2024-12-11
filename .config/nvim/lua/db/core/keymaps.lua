@@ -2,7 +2,6 @@
 vim.g.mapleader = " "
 
 local keymap = vim.keymap -- for conciseness
-
 ---------------------
 -- General Keymaps -------------------
 
@@ -29,4 +28,18 @@ keymap.set("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open new tab" }) -- o
 keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" }) -- close current tab
 keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" }) --  go to next tab
 keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) --  go to previous tab
-keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open curre s buffer in new tab" }) --  move current buffer to new tabt
+keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tabt
+
+-- Function to copy relative file path
+vim.keymap.set("n", "<leader>cr", function()
+	local path = vim.fn.expand("%")
+	vim.fn.setreg("+", path) -- Copy to system clipboard
+	print("Copied relative path: " .. path)
+end, { desc = "Copy Relative File Path" })
+
+-- Function to copy absolute file path
+vim.keymap.set("n", "<leader>cs", function()
+	local path = vim.fn.expand("%:p")
+	vim.fn.setreg("+", path) -- Copy to system clipboard
+	print("Copied absolute path: " .. path)
+end, { desc = "Copy Absolute File Path" })
