@@ -43,3 +43,19 @@ vim.keymap.set("n", "<leader>cs", function()
 	vim.fn.setreg("+", path) -- Copy to system clipboard
 	print("Copied absolute path: " .. path)
 end, { desc = "Copy Absolute File Path" })
+
+-- Lua function to open the current file on GitHub using the git openfile command
+function open_remote_file_on_github()
+	-- Get the relative path of the current file (relative to the git repository)
+	local file_path = vim.fn.expand("%") -- This gets the relative path of the current file
+
+	-- Use vim.fn.system() to run the git openfile command with the relative file path
+	vim.fn.system(string.format("git openfile %s", file_path))
+end
+
+vim.keymap.set(
+	"n",
+	"<leader>cg",
+	":lua open_remote_file_on_github()<CR>",
+	{ desc = "Open remote github file", noremap = true, silent = true }
+)
