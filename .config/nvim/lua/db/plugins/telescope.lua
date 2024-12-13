@@ -31,12 +31,21 @@ return {
 						["<C-q>"] = actions.send_selected_to_qflist,
 					},
 				},
+				layout_strategy = "horizontal", -- or "vertical"
+				layout_config = {
+					horizontal = {
+						width = 0.99, -- Adjust this to increase the width (90% of the editor width)
+						preview_width = 0.4, -- Adjust the preview area width (50% of total width)
+					},
+					vertical = {
+						width = 0.6, -- Adjust this for vertical layout (80% of editor width)
+						height = 0.9, -- Adjust the height (90% of editor height)
+					},
+				},
 			},
 			pickers = {
 				find_files = {
 					hidden = true,
-					-- needed to exclude some files & dirs from general search
-					-- when not included or specified in .gitignore
 					find_command = {
 						"rg",
 						"--files",
@@ -49,6 +58,24 @@ return {
 						"--glob=!**/yarn.lock",
 						"--glob=!**/package-lock.json",
 					},
+				},
+				live_grep = {
+					hidden = true,
+					additional_args = function()
+						return {
+							"--hidden",
+							"--glob=!**/.git/*",
+							"--glob=!**/.idea/*",
+							"--glob=!**/.vscode/*",
+							"--glob=!**/build/*",
+							"--glob=!**/dist/*",
+							"--glob=!**/yarn.lock",
+							"--glob=!**/package-lock.json",
+							"--glob=!**/*test.tsx",
+							"--glob=!**/*test.go",
+							"--glob=!**/english.ts",
+						}
+					end,
 				},
 			},
 		})
