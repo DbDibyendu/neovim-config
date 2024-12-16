@@ -1,18 +1,27 @@
-
 #!/bin/bash
 
-# VPN credentials
-VPN_PASSWORD="Performance@123456789"
-VPN_USER="dibyendu.biswas"
-VPN_HOST="secure.hotstar.com"
-VPN_CAFILE="$HOME/vpnclient/cert.pem"
-VPN_SCRIPT="$HOME/vpnclient/vpnc-script"
-VPN_CLIENT="$HOME/vpnclient/openconnect"
-VPN_CLIENT_LIB="$HOME/vpnclient"
+# Load environment variables from the sibling .env file
+ENV_FILE="$(dirname "$0")/.env" # Adjust path if necessary
+
+if [ -f "$ENV_FILE" ]; then
+  set -a  # Automatically export variables from the .env file
+  . "$ENV_FILE"
+  set +a  # Stop exporting variables
+else
+  echo "Error: .env file not found in the script's directory."
+  exit 1
+fi
+
+# Check if sudo credentials are cached
+sudo -n true 2>/dev/null
+if [ $? -ne 0 ]; then
+  # If credentials are not cached, provide the root password
+  echo "$ROOT_PASSWORD" | sudo -S true
+fi
 
 # Run the VPN client with the password and echo 1 for further authentication
 (
-  echo "$VPN_PASSWORD"    # Send password
+  echo "$VPN_PASSWORD"    # Send VPN password
   echo "1"                # Send "1" to confirm and continue
 ) | sudo DYLD_LIBRARY_PATH="$VPN_CLIENT_LIB" "$VPN_CLIENT" \
   -s "$VPN_SCRIPT" --cafile="$VPN_CAFILE" --protocol=gp \

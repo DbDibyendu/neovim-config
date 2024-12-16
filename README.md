@@ -1,22 +1,24 @@
 # Dotfile configuration
 
-## Pre-requisites 
+## Pre-requisites
 
+### Install [Homebrew](https://brew.sh/) as package manager
 
-### Install [Homebrew](https://brew.sh/) as package manager 
 You can download all the cli tools from here https://www.josean.com/posts/7-amazing-cli-tools
-### Stow 
-Download `Stow` to get symlink the dotfiles to $HOME. 
+
+### Stow
+
+Download `Stow` to get symlink the dotfiles to $HOME.
 
 ```
 brew install stow
 ```
 
 Next stow in the repo via
+
 ```
 stow -t ~ .
 ```
-
 
 ## Neovim Setup
 
@@ -70,17 +72,22 @@ For XCode Command Line Tools do:
 xcode-select --install
 ```
 
-
 ## tmux config
 
 ✍🏼 Blog Post: [How To Use and Configure Tmux Alongside Neovim](https://josean.com/posts/tmux-setup)
 
 📹 Youtube Guide: [How I Setup And Use Tmux Alongside Neovim for an Awesome Dev Workflow](https://youtu.be/U-omALWIBos)
 
-
 ## zshrc config
-
 
 ## Useful Links
 
 Josean Dev Repo: https://github.com/josean-dev/dev-environment-files?tab=readme-ov-file
+
+## General Tips
+
+Save without formatter in vim
+
+```
+:noautocmd w
+```
