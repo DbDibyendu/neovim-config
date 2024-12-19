@@ -91,3 +91,18 @@ Save without formatter in vim
 ```
 :noautocmd w
 ```
+
+For Binders Tests, You have to cd into the particular domain
+for example for subscriptions
+
+```
+cd domains/subscriptions
+```
+
+then
+
+```
+go mod tidy
+```
+
+And then u can test via <leader> zg (which starts dlv-go)
