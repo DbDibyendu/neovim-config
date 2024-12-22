@@ -21,13 +21,11 @@ alias yw-dnext='cd packages/website; rm -rf .next; cd ../..;'
 alias jestcomp='yarn jest $(pwd)/'
 alias y-lr='yarn workspace main dev'
 alias yl-dnext='cd packages/main; rm -rf .next; cd ../..;'
-alias vz='vim ~/.zshrc'
-alias sz='source ~/.zshrc'
 alias mp='make sync TEAMS=payments'
 alias gpmp='ga .; gcmsg "Make sync"; gp'
 
 
-# Source GVM if installed
+# Source GVM if installed, go version manager
 [[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
 
 # ---- FZF -----

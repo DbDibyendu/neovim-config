@@ -53,7 +53,7 @@ return {
 						"--glob=!**/.git/*",
 						"--glob=!**/.idea/*",
 						"--glob=!**/.vscode/*",
-						"--glob=!**/build/*",
+						-- "--glob=!**/build/*",
 						"--glob=!**/dist/*",
 						"--glob=!**/yarn.lock",
 						"--glob=!**/package-lock.json",
@@ -67,7 +67,7 @@ return {
 							"--glob=!**/.git/*",
 							"--glob=!**/.idea/*",
 							"--glob=!**/.vscode/*",
-							"--glob=!**/build/*",
+							-- "--glob=!**/build/*",
 							"--glob=!**/dist/*",
 							"--glob=!**/yarn.lock",
 							"--glob=!**/package-lock.json",
@@ -86,7 +86,13 @@ return {
 		local keymap = vim.keymap -- for conciseness
 
 		keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" })
-		keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Fuzzy find recent files" })
+		-- Set up Telescope for project-specific recent files
+		keymap.set("n", "<leader>fr", function()
+			require("telescope.builtin").oldfiles({
+				cwd_only = true, -- Show only files from the current working directory
+				prompt_title = "Recent Files (Current Project)",
+			})
+		end, { desc = "Fuzzy find recent files in the current project" })
 		keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
 		keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
 	end,
