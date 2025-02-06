@@ -119,12 +119,6 @@ return {
 		vim.keymap.set("n", "<leader>zo", ":lua require('dap').step_over()<CR>", { desc = "Step Over" })
 		vim.keymap.set("n", "<leader>zi", ":lua require('dap').step_into()<CR>", { desc = "Step Into" })
 		vim.keymap.set("n", "<leader>zq", ":lua require('dap').step_out()<CR>", { desc = "Step Out" })
-		vim.keymap.set(
-			"n",
-			"<leader><F3>",
-			":lua require('dap').set_breakpoint(vim.fn.input('Breakpoint Condition: '))<CR>",
-			{ desc = "Set breakpoint with condition" }
-		)
 		vim.keymap.set("n", "<leader>zx", ":lua require('dap').clear_breakpoints()<CR>", { desc = "Clear Breakpoints" })
 
 		-- DAP Go Keymaps

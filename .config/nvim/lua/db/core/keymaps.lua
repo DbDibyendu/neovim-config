@@ -3,6 +3,23 @@ vim.g.mapleader = " "
 
 local keymap = vim.keymap -- for conciseness
 ---------------------
+local which_key = require("which-key")
+
+-- Register key groups for better descriptions in the first modal
+which_key.register({
+	c = { name = "CopyPath/GitHubRemote" }, -- Grouping copy and GitHub-related commands
+	s = { name = "Splits" }, -- Grouping split-related commands
+	t = { name = "Tabs" }, -- Grouping tab-related commands
+	n = { name = "Highlights" }, -- Clear search highlights
+	e = { name = "File Explorer" }, -- Clear search highlights
+	h = { name = "Git" }, -- Clear search highlights
+	m = { name = "Format" }, -- Clear search highlights
+	l = { name = "LazyGit" }, -- Clear search highlights
+	z = { name = "Debugger" }, -- Clear search highlights
+	f = { name = "FileFinder" }, -- Clear search highlights
+	w = { name = "Sessions" }, -- Clear search highlights
+	r = { name = "LSP" }, -- Clear search highlights
+}, { prefix = "<leader>" })
 -- General Keymaps -------------------
 
 -- use jk to exit insert mode
