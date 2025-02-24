@@ -27,11 +27,3 @@ require("lazy").setup({
 		notify = false,
 	},
 })
-
-vim.g.which_key_disable_checkhealth = true
-vim.api.nvim_create_autocmd("User", {
-	pattern = "WhichKey",
-	callback = function()
-		vim.cmd("silent! checkhealth which-key") -- Suppress the health check warning
-	end,
-})

@@ -18,12 +18,8 @@ source ~/.nvm/nvm.sh
 alias y-mweb="yarn workspace website dev-mweb"
 alias y-web="yarn workspace website dev"
 alias yw-dnext='cd packages/website; rm -rf .next; cd ../..;'
-alias jestcomp='yarn jest $(pwd)/'
 alias y-lr='yarn workspace main dev'
 alias yl-dnext='cd packages/main; rm -rf .next; cd ../..;'
-alias mp='make sync TEAMS=payments'
-alias gpmp='ga .; gcmsg "Make sync"; gp'
-
 
 # Source GVM if installed, go version manager
 [[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
