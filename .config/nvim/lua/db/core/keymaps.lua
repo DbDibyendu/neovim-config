@@ -17,7 +17,7 @@ require("which-key").add({
 	{ "<leader>z", group = "[Z]ebugger" },
 	{ "<leader>f", group = "[F]ileFinder" },
 	{ "<leader>w", group = "[W]orkspace Sessions" },
-	{ "<leader>r", group = "[R] LSP" },
+	{ "<leader>r", group = "[R]LSP" },
 })
 
 -- General Keymaps -------------------
@@ -67,3 +67,10 @@ vim.keymap.set(
 	":lua open_remote_file_on_github()<CR>",
 	{ desc = "Open remote github file", noremap = true, silent = true }
 )
+
+-- fold option for neovim
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldlevel = 99 -- Start with all folds open
+vim.opt.foldenable = true -- Enable folding
+vim.opt.foldcolumn = "1" -- Show a fold column on the left
