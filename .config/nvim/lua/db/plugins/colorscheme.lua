@@ -6,8 +6,6 @@ return {
 		-- Set the colorscheme
 		vim.cmd("colorscheme oxocarbon")
 
-		-- Optional: Configure UI tweaks
-		vim.opt.termguicolors = true
 		vim.opt.background = "dark" -- Oxocarbon is a dark theme
 	end,
 }
