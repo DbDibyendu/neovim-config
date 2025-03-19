@@ -136,39 +136,11 @@ end
 
 -- tab bar
 config.hide_tab_bar_if_only_one_tab = false
-config.tab_bar_at_bottom = true
 config.use_fancy_tab_bar = false
+config.tab_bar_at_bottom = true
 config.tab_and_split_indices_are_zero_based = true
 
 -- Color overrides for a purple theme
-config.colors = {
-	tab_bar = {
-		background = "#0F172A", -- Deep navy blue background
-		active_tab = {
-			bg_color = "#2563EB", -- Bright royal blue
-			fg_color = "#E0F2FE", -- Soft ice-blue text
-			intensity = "Bold",
-		},
-		inactive_tab = {
-			bg_color = "#1E3A8A", -- Muted deep blue
-			fg_color = "#BFDBFE", -- Soft pastel blue
-		},
-		inactive_tab_hover = {
-			bg_color = "#3B82F6", -- Vibrant azure blue
-			fg_color = "#F0F9FF",
-		},
-		new_tab = {
-			bg_color = "#172554", -- Deep midnight blue
-			fg_color = "#93C5FD", -- Soft sky blue
-		},
-		new_tab_hover = {
-			bg_color = "#60A5FA", -- Light bright blue
-			fg_color = "#0F172A", -- Dark contrast
-		},
-	},
-}
-
--- Align bottom tab bar visually by adding padding
 config.window_padding = {
 	left = 0,
 	right = 0,
@@ -187,11 +159,32 @@ wezterm.on("update-right-status", function(window, _)
 	end
 
 	window:set_left_status(wezterm.format({
-		{ Background = { Color = "#0F172A" } },
-		{ Text = "                 " }, -- Add leading spaces for padding
 		{ Text = prefix },
 		{ Text = SOLID_LEFT_ARROW },
 	}))
+end)
+
+-- Define custom tab names
+local tab_names = {
+	"config",
+	"web",
+	"web-lr",
+	"personal",
+	"mock",
+	"binder",
+}
+
+-- Function to get custom tab title with index
+local function tab_title(tab)
+	local index = tab.tab_index
+	local name = tab_names[index + 1] or tab.title -- Default name for other tabs
+	return tostring(index) .. ":" .. name
+end
+
+wezterm.on("format-tab-title", function(tab)
+	return {
+		{ Text = " " .. tab_title(tab) .. " " },
+	}
 end)
 
 -- and finally, return the configuration to wezterm
