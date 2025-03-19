@@ -1,41 +1,3 @@
--- WezTerm Keybindings Documentation by dragonlobster
--- ===================================================
--- Leader Key:
--- The leader key is set to CTRL+ SPACE, with a timeout of 2000 milliseconds (2 seconds).
--- To execute any keybinding, press the leader key (ALT + q) first, then the corresponding key.
-
--- Keybindings:
--- 1. Tab Management:
---    - LEADER + c: Create a new tab in the current pane's domain.
---    - LEADER + x: Close the current pane (with confirmation).
---    - LEADER + b: Switch to the previous tab.
---    - LEADER + n: Switch to the next tab.
---    - LEADER + <number>: Switch to a specific tab (0–9).
-
--- 2. Pane Splitting:
---    - LEADER + |: Split the current pane horizontally into two panes.
---    - LEADER + -: Split the current pane vertically into two panes.
-
--- 3. Pane Navigation:
---    - LEADER + h: Move to the pane on the left.
---    - LEADER + j: Move to the pane below.
---    - LEADER + k: Move to the pane above.
---    - LEADER + l: Move to the pane on the right.
-
--- 4. Pane Resizing:
---    - LEADER + LeftArrow: Increase the pane size to the left by 5 units.
---    - LEADER + RightArrow: Increase the pane size to the right by 5 units.
---    - LEADER + DownArrow: Increase the pane size downward by 5 units.
---    - LEADER + UpArrow: Increase the pane size upward by 5 units.
-
--- 5. Status Line:
---    - The status line indicates when the leader key is active, displaying an ocean wave emoji (🌊).
-
--- Miscellaneous Configurations:
--- - Tabs are shown even if there's only one tab.
--- - The tab bar is located at the bottom of the terminal window.
--- - Tab and split indices are zero-based.
-
 -- Pull in the wezterm API
 local wezterm = require("wezterm")
 
@@ -70,6 +32,19 @@ end)
 -- tmux
 config.leader = { key = "Space", mods = "CTRL", timeout_milliseconds = 1500 }
 config.keys = {
+	-- Leader + , for renaming the tab
+	{
+		key = ",",
+		mods = "LEADER",
+		action = wezterm.action.PromptInputLine({
+			description = "Rename Tab:",
+			action = wezterm.action_callback(function(window, pane, line)
+				if line then
+					window:active_tab():set_title(line)
+				end
+			end),
+		}),
+	},
 	{ key = "s", mods = "LEADER", action = wezterm.action({ EmitEvent = "save_session" }) },
 	{ key = "l", mods = "LEADER", action = wezterm.action({ EmitEvent = "load_session" }) },
 	{ key = "r", mods = "LEADER", action = wezterm.action({ EmitEvent = "restore_session" }) },
@@ -165,25 +140,56 @@ config.tab_bar_at_bottom = true
 config.use_fancy_tab_bar = false
 config.tab_and_split_indices_are_zero_based = true
 
--- tmux status
+-- Color overrides for a purple theme
+config.colors = {
+	tab_bar = {
+		background = "#0F172A", -- Deep navy blue background
+		active_tab = {
+			bg_color = "#2563EB", -- Bright royal blue
+			fg_color = "#E0F2FE", -- Soft ice-blue text
+			intensity = "Bold",
+		},
+		inactive_tab = {
+			bg_color = "#1E3A8A", -- Muted deep blue
+			fg_color = "#BFDBFE", -- Soft pastel blue
+		},
+		inactive_tab_hover = {
+			bg_color = "#3B82F6", -- Vibrant azure blue
+			fg_color = "#F0F9FF",
+		},
+		new_tab = {
+			bg_color = "#172554", -- Deep midnight blue
+			fg_color = "#93C5FD", -- Soft sky blue
+		},
+		new_tab_hover = {
+			bg_color = "#60A5FA", -- Light bright blue
+			fg_color = "#0F172A", -- Dark contrast
+		},
+	},
+}
+
+-- Align bottom tab bar visually by adding padding
+config.window_padding = {
+	left = 0,
+	right = 0,
+	top = 0,
+	bottom = 0,
+}
+
+-- ocean wave for leader
 wezterm.on("update-right-status", function(window, _)
 	local SOLID_LEFT_ARROW = ""
-	local ARROW_FOREGROUND = { Foreground = { Color = "#c6a0f6" } }
 	local prefix = ""
 
 	if window:leader_is_active() then
-		prefix = " " .. utf8.char(0x1f30a) -- ocean wave
+		prefix = utf8.char(0x1f30a) -- ocean wave
 		SOLID_LEFT_ARROW = utf8.char(0xe0b2)
 	end
 
-	if window:active_tab():tab_id() ~= 0 then
-		ARROW_FOREGROUND = { Foreground = { Color = "#1e2030" } }
-	end -- arrow color based on if tab is first pane
-
 	window:set_left_status(wezterm.format({
-		{ Background = { Color = "#b7bdf8" } },
+		{ Background = { Color = "#0F172A" } },
+		{ Text = "                 " }, -- Add leading spaces for padding
 		{ Text = prefix },
-		ARROW_FOREGROUND,
 		{ Text = SOLID_LEFT_ARROW },
 	}))
 end)
