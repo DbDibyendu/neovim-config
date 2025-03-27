@@ -194,7 +194,7 @@ tabline.setup({
 	},
 	sections = {
 		tabline_a = { "mode" },
-		tabline_b = { "workspace" },
+		tabline_b = {},
 		tabline_c = { " " },
 		tab_active = {
 			"index",
@@ -210,5 +210,6 @@ tabline.setup({
 	},
 	extensions = {},
 })
+
 -- and finally, return the configuration to wezterm
 return config
