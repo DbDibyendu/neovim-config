@@ -11,6 +11,8 @@ if wezterm.config_builder then
 end
 
 -- For example, changing the color scheme:
+--
+config.color_scheme = "Dracula"
 config.font_size = 14
 
 config.initial_rows = 50 -- Optional: Set initial window size
