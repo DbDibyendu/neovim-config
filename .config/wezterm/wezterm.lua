@@ -12,13 +12,13 @@ end
 
 -- For example, changing the color scheme:
 --
-config.color_scheme = "Dracula"
+-- config.color_scheme = "Dracula"
 config.font_size = 14
 
-config.initial_rows = 50 -- Optional: Set initial window size
+config.initial_rows = 100 -- Optional: Set initial window size
 config.initial_cols = 180 -- Optional: Set initial window size
 config.window_decorations = "RESIZE"
-
+--
 -- load the session manager
 local session_manager = require("wezterm-session-manager/session-manager")
 wezterm.on("save_session", function(window)
@@ -140,13 +140,13 @@ end
 config.hide_tab_bar_if_only_one_tab = false
 config.use_fancy_tab_bar = false
 config.tab_bar_at_bottom = true
-config.tab_and_split_indices_are_zero_based = true
+config.tab_and_split_indices_are_zero_based = false
 
 -- Color overrides for a purple theme
 config.window_padding = {
 	left = 0,
 	right = 0,
-	top = 0,
+	top = 30,
 	bottom = 00,
 }
 
@@ -174,6 +174,7 @@ wezterm.on("format-tab-title", function(tab)
 end)
 
 -- Custom tab setup
+--
 local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
 tabline.setup({
 	options = {
@@ -182,16 +183,16 @@ tabline.setup({
 		tabs_enabled = true,
 		theme_overrides = {},
 		section_separators = {
-			left = wezterm.nerdfonts.pl_left_hard_divider,
-			right = wezterm.nerdfonts.pl_right_hard_divider,
+			left = wezterm.nerdfonts.ple_right_half_circle_thick,
+			right = wezterm.nerdfonts.ple_left_half_circle_thick,
 		},
 		component_separators = {
-			left = wezterm.nerdfonts.pl_left_soft_divider,
-			right = wezterm.nerdfonts.pl_right_soft_divider,
+			left = wezterm.nerdfonts.ple_right_half_circle_thin,
+			right = wezterm.nerdfonts.ple_left_half_circle_thin,
 		},
 		tab_separators = {
-			left = wezterm.nerdfonts.pl_left_hard_divider,
-			right = wezterm.nerdfonts.pl_right_hard_divider,
+			left = wezterm.nerdfonts.ple_right_half_circle_thick,
+			right = wezterm.nerdfonts.ple_left_half_circle_thick,
 		},
 	},
 	sections = {
@@ -213,5 +214,8 @@ tabline.setup({
 	extensions = {},
 })
 
--- and finally, return the configuration to wezterm
+config.window_background_opacity = 0.2 -- Set to any value between 0.0 (fully transparent) and 1.0 (opaque)
+config.text_background_opacity = 1.0 -- Optional: keep text fully opaque
+-- If you're on macOS and using Metal, enable this:
+
 return config
