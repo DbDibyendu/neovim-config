@@ -202,9 +202,9 @@ tabline.setup({
 		},
 	},
 	sections = {
-		tabline_a = { "mode" },
-		tabline_b = {},
-		tabline_c = { " " },
+		tabline_a = {},
+		tabline_b = { "window" },
+		tabline_c = {},
 		tab_active = {
 			"index",
 			{ "parent", padding = 0 },
