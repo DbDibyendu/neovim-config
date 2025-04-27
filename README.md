@@ -83,6 +83,7 @@ xcode-select --install
 ## Useful Links
 
 Josean Dev Repo: https://github.com/josean-dev/dev-environment-files?tab=readme-ov-file
+Netwr Shortcuts: https://gist.github.com/danidiaz/37a69305e2ed3319bfff9631175c5d0f
 
 ## General Tips
 

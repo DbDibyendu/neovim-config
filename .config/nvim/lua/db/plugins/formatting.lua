@@ -1,6 +1,7 @@
 return {
 	"stevearc/conform.nvim",
-	event = { "BufReadPre", "BufNewFile" },
+	event = { "bufreadpre", "bufnewfile" },
+  -- Required for formatting
 	config = function()
 		local conform = require("conform")
 
@@ -35,6 +36,6 @@ return {
 				async = false,
 				timeout_ms = 1000,
 			})
-		end, { desc = "Format file or range (in visual mode)" })
+		end, { desc = "format file or range (in visual mode)" })
 	end,
 }
