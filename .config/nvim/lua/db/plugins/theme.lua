@@ -11,8 +11,8 @@ return {
 		vim.opt.background = "dark"
 
 		-- Set background to dark grey instead of pure black
-		local dark_grey = "#000000" -- very dark grey color
+		-- local dark_grey = "#141414" -- very dark grey color
 
-		vim.api.nvim_set_hl(0, "Normal", { bg = dark_grey })
+		-- vim.api.nvim_set_hl(0, "Normal", { bg = dark_grey })
 	end,
 }
