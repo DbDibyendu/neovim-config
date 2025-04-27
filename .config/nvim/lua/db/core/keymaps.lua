@@ -38,6 +38,9 @@ keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" }) --  
 keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) --  go to previous tab
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tabt
 
+-- default file explorer
+vim.keymap.set("n", "<leader>e", ":Explore<CR>", { noremap = true, silent = true })
+
 -- Function to copy relative file path
 vim.keymap.set("n", "<leader>cr", function()
 	local path = vim.fn.expand("%")

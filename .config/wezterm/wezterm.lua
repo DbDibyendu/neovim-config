@@ -1,6 +1,7 @@
 -- Pull in the wezterm API
 local wezterm = require("wezterm")
 
+local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
 -- This table will hold the configuration.
 local config = {}
 
@@ -23,11 +24,17 @@ config.window_decorations = "RESIZE"
 local session_manager = require("wezterm-session-manager/session-manager")
 wezterm.on("save_session", function(window)
 	session_manager.save_state(window)
+	wezterm.log_info("Session saved!")
 end)
 wezterm.on("load_session", function(window)
 	session_manager.load_state(window)
 end)
 wezterm.on("restore_session", function(window)
+	session_manager.restore_state(window)
+end)
+
+wezterm.on("gui-startup", function(window, pane)
+	wezterm.log_info("GUI startup event triggered")
 	session_manager.restore_state(window)
 end)
 
@@ -140,7 +147,7 @@ end
 config.hide_tab_bar_if_only_one_tab = false
 config.use_fancy_tab_bar = false
 config.tab_bar_at_bottom = true
-config.tab_and_split_indices_are_zero_based = false
+config.tab_and_split_indices_are_zero_based = true
 
 -- Color overrides for a purple theme
 config.window_padding = {
@@ -175,7 +182,6 @@ end)
 
 -- Custom tab setup
 --
-local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
 tabline.setup({
 	options = {
 		icons_enabled = true,
@@ -211,7 +217,7 @@ tabline.setup({
 		tabline_y = { "datetime", "battery" },
 		tabline_z = {},
 	},
-	extensions = {},
+	extensions = { "resurrect" },
 })
 
 config.window_background_opacity = 0.2 -- Set to any value between 0.0 (fully transparent) and 1.0 (opaque)

@@ -150,7 +150,6 @@ return {
 		-- Set random quote
 		dashboard.section.footer.val = center_quote(quotes[math.random(#quotes)])
 		-- Define the highlight group for red color
-		vim.api.nvim_set_hl(0, "AlphaHeader", { fg = "#ff0000", bold = true })
 		dashboard.section.header.opts.hl = "AlphaHeader"
 
 		dashboard.section.buttons.val = {}
