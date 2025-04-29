@@ -58,6 +58,7 @@ return {
 						"--glob=!**/yarn.lock",
 						"--glob=!**/package-lock.json",
 					},
+					debug = true,
 				},
 				live_grep = {
 					hidden = true,
