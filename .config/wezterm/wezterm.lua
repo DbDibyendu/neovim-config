@@ -203,7 +203,7 @@ tabline.setup({
 	},
 	sections = {
 		tabline_a = {},
-		tabline_b = { "window" },
+		tabline_b = { "  STOP  " },
 		tabline_c = {},
 		tab_active = {
 			"index",
