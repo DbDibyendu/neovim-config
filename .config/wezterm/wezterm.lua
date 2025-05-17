@@ -220,7 +220,6 @@ tabline.setup({
 	},
 })
 
-config.window_background_opacity = 0.2 -- Set to any value between 0.0 (fully transparent) and 1.0 (opaque)
 config.text_background_opacity = 1.0 -- Optional: keep text fully opaque
 
 return config
