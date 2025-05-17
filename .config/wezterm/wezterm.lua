@@ -15,6 +15,7 @@ end
 --
 -- config.color_scheme = "Dracula"
 config.font_size = 14
+config.font = wezterm.font("JetBrains Mono", { weight = "Regular" })
 
 config.initial_rows = 100 -- Optional: Set initial window size
 config.initial_cols = 180 -- Optional: Set initial window size
@@ -214,14 +215,12 @@ tabline.setup({
 		},
 		tab_inactive = { "index", { "process", padding = { left = 0, right = 1 } } },
 		tabline_x = { "ram", "cpu" },
-		tabline_y = { "datetime", "battery" },
+		tabline_y = { "datetime" },
 		tabline_z = {},
 	},
-	extensions = { "resurrect" },
 })
 
 config.window_background_opacity = 0.2 -- Set to any value between 0.0 (fully transparent) and 1.0 (opaque)
 config.text_background_opacity = 1.0 -- Optional: keep text fully opaque
--- If you're on macOS and using Metal, enable this:
 
 return config
