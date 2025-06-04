@@ -11,7 +11,7 @@ require("which-key").add({
 	{ "<leader>t", group = "[T]abs" },
 	{ "<leader>n", group = "[N]o Highlights" },
 	{ "<leader>e", group = "[E]xplorer" },
-	{ "<leader>h", group = "[H]it Git" },
+	{ "<leader>h", group = "[H]it Git Commands" },
 	{ "<leader>m", group = "[M]ake Format" },
 	{ "<leader>l", group = "[L]azyGit" },
 	{ "<leader>z", group = "[Z]ebugger" },
@@ -89,3 +89,5 @@ vim.keymap.set("t", "<C-h>", "<C-\\><C-n><C-w>h", { desc = "Move to left window"
 vim.keymap.set("t", "<C-j>", "<C-\\><C-n><C-w>j", { desc = "Move to bottom window" })
 vim.keymap.set("t", "<C-k>", "<C-\\><C-n><C-w>k", { desc = "Move to top window" })
 vim.keymap.set("t", "<C-l>", "<C-\\><C-n><C-w>l", { desc = "Move to right window" })
+
+-- cursor
