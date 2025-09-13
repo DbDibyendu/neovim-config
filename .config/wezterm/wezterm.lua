@@ -79,9 +79,17 @@ config.keys = {
 		action = wezterm.action.ActivateTabRelative(1),
 	},
 	{
-		mods = "LEADER",
 		key = "v",
-		action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
+		mods = "LEADER",
+		action = wezterm.action_callback(function(win, pane)
+			win:perform_action(
+				wezterm.action.SplitPane({
+					direction = "Right", -- creates a vertical split (side-by-side)
+					size = { Percent = 40 }, -- or use PixelWidth = <value> if you want exact pixel control
+				}),
+				pane
+			)
+		end),
 	},
 	{
 		mods = "LEADER",

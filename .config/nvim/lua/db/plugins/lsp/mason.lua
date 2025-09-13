@@ -35,17 +35,21 @@ return {
 				"rust_analyzer",
 				"lua_ls",
 				"clangd",
+				"jdtls",
+				"lemminx",
 			},
 		})
 
 		mason_tool_installer.setup({
 			ensure_installed = {
-				"prettier", -- prettier formatter
-				"stylua", -- lua formatter
-				"isort", -- python formatter
-				"black", -- python formatter
-				"pylint",
-				"eslint_d",
+				"prettier", -- JS/TS formatter
+				"stylua", -- Lua formatter
+				"isort", -- Python import sorter
+				"black", -- Python formatter
+				"pylint", -- Python linter
+				"eslint_d", -- JS/TS linter
+				"google-java-format", -- ✅ Java formatter
+				-- OR "clang-format",  -- (alternative for Java + C/C++)
 			},
 		})
 	end,
