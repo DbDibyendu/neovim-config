@@ -12,7 +12,6 @@ plugins=(git zsh-autosuggestions)
 
 # Source Oh My Zsh and NVM
 source $ZSH/oh-my-zsh.sh
-source ~/.nvm/nvm.sh
 
 # Aliases
 alias y-mweb="yarn workspace website dev-mweb"
@@ -63,8 +62,6 @@ cyan="#2CF9ED"
 
 export FZF_DEFAULT_OPTS="--color=fg:${fg},bg:${bg},hl:${purple},fg+:${fg},bg+:${bg_highlight},hl+:${purple},info:${blue},prompt:${cyan},pointer:${cyan},marker:${cyan},spinner:${cyan},header:${cyan}"
 
-# Source fzf git
-source ~/fzf-git.sh/fzf-git.sh
 
 # Binder repo path
 export BINDER_REPO_PATH="/Users/dibyendu.biswas/project/subs-pay/hs-core-widget-binder-query"
