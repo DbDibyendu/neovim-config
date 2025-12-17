@@ -1,7 +1,7 @@
 return {
 	"stevearc/conform.nvim",
 	event = { "bufreadpre", "bufnewfile" },
-  -- Required for formatting
+	-- Required for formatting
 	config = function()
 		local conform = require("conform")
 
@@ -21,7 +21,6 @@ return {
 				graphql = { "prettier" },
 				liquid = { "prettier" },
 				lua = { "stylua" },
-				python = { "isort", "black" },
 			},
 			format_on_save = {
 				lsp_fallback = true,

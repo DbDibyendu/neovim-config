@@ -20,24 +20,6 @@ config.font = wezterm.font("JetBrains Mono", { weight = "Regular" })
 config.initial_rows = 100 -- Optional: Set initial window size
 config.initial_cols = 180 -- Optional: Set initial window size
 config.window_decorations = "RESIZE"
---
--- load the session manager
--- local session_manager = require("wezterm-session-manager/session-manager")
--- wezterm.on("save_session", function(window)
--- 	session_manager.save_state(window)
--- 	wezterm.log_info("Session saved!")
--- end)
--- wezterm.on("load_session", function(window)
--- 	session_manager.load_state(window)
--- end)
--- wezterm.on("restore_session", function(window)
--- 	session_manager.restore_state(window)
--- end)
---
--- wezterm.on("gui-startup", function(window, pane)
--- 	wezterm.log_info("GUI startup event triggered")
--- 	session_manager.restore_state(window)
--- end)
 
 -- tmux
 config.leader = { key = "Space", mods = "CTRL", timeout_milliseconds = 1500 }
@@ -166,26 +148,39 @@ config.window_padding = {
 	bottom = 00,
 }
 
--- Define custom tab names
-local tab_names = {
-	"config",
-	"web",
-	"web-lr",
-	"personal",
-	"mock",
-	"binder",
-}
-
 -- Function to get custom tab title with index
-local function tab_title(tab)
-	local index = tab.tab_index
-	local name = tab_names[index + 1] or tab.title -- Default name for other tabs
-	return tostring(index) .. ":" .. name
+local function cwd_name(tab)
+	local cwd = tab.active_pane.current_working_dir
+	if not cwd then
+		return "shell"
+	end
+
+	-- Convert file:// URI to path
+	local path = cwd.file_path or ""
+
+	-- Extract last directory name
+	local dir = path:match("([^/]+)$")
+
+	return dir or "shell"
 end
 
-wezterm.on("format-tab-title", function(tab)
+wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
+	local title = cwd_name(tab)
+
+	if tab.is_active then
+		return {
+			{ Text = " " .. title .. " " },
+		}
+	end
+
+	if tab.is_last_active then
+		return {
+			{ Text = " " .. title .. "*" },
+		}
+	end
+
 	return {
-		{ Text = " " .. tab_title(tab) .. " " },
+		{ Text = " " .. title .. " " },
 	}
 end)
 

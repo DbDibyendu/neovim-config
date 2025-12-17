@@ -44,9 +44,6 @@ return {
 			ensure_installed = {
 				"prettier", -- JS/TS formatter
 				"stylua", -- Lua formatter
-				"isort", -- Python import sorter
-				"black", -- Python formatter
-				"pylint", -- Python linter
 				"eslint_d", -- JS/TS linter
 				"google-java-format", -- ✅ Java formatter
 				-- OR "clang-format",  -- (alternative for Java + C/C++)
