@@ -22,6 +22,7 @@ Next stow in the repo via
 stow -t ~ .
 ```
 
+### Terminal
 Install fzf and fd : For search command via **fp**
 
 ```
@@ -34,6 +35,13 @@ git clone https://github.com/zsh-users/zsh-autosuggestions \
 ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 ```
 
+Install Wezterm
+
+Install wezterm session manager
+```
+git clone https://github.com/mluders/wezterm-session-manager \
+~/.config/wezterm/wezterm-session-manager
+```
 
 ## Neovim Setup
 
@@ -48,13 +56,8 @@ If you clone the repo into your machine and use the config by copying .config/nv
 - XCode Command Line Tools
 - If working with typescript/javascript and the typescript language server like me. You might need to install node/npm.
 
-If you're on mac, like me, you can install iTerm2, Neovim, Meslo Nerd Font, Ripgrep and Node with homebrew.
+If you're on mac, like me, you can install Wezterm, Neovim, Meslo Nerd Font, Ripgrep and Node with homebrew.
 
-iTerm2:
-
-```bash
-brew install --cask iterm2
-```
 
 Nerd font:
 
