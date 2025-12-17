@@ -22,22 +22,22 @@ config.initial_cols = 180 -- Optional: Set initial window size
 config.window_decorations = "RESIZE"
 --
 -- load the session manager
-local session_manager = require("wezterm-session-manager/session-manager")
-wezterm.on("save_session", function(window)
-	session_manager.save_state(window)
-	wezterm.log_info("Session saved!")
-end)
-wezterm.on("load_session", function(window)
-	session_manager.load_state(window)
-end)
-wezterm.on("restore_session", function(window)
-	session_manager.restore_state(window)
-end)
-
-wezterm.on("gui-startup", function(window, pane)
-	wezterm.log_info("GUI startup event triggered")
-	session_manager.restore_state(window)
-end)
+-- local session_manager = require("wezterm-session-manager/session-manager")
+-- wezterm.on("save_session", function(window)
+-- 	session_manager.save_state(window)
+-- 	wezterm.log_info("Session saved!")
+-- end)
+-- wezterm.on("load_session", function(window)
+-- 	session_manager.load_state(window)
+-- end)
+-- wezterm.on("restore_session", function(window)
+-- 	session_manager.restore_state(window)
+-- end)
+--
+-- wezterm.on("gui-startup", function(window, pane)
+-- 	wezterm.log_info("GUI startup event triggered")
+-- 	session_manager.restore_state(window)
+-- end)
 
 -- tmux
 config.leader = { key = "Space", mods = "CTRL", timeout_milliseconds = 1500 }
