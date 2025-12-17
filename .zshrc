@@ -63,9 +63,11 @@ cyan="#2CF9ED"
 export FZF_DEFAULT_OPTS="--color=fg:${fg},bg:${bg},hl:${purple},fg+:${fg},bg+:${bg_highlight},hl+:${purple},info:${blue},prompt:${cyan},pointer:${cyan},marker:${cyan},spinner:${cyan},header:${cyan}"
 
 
-# Binder repo path
+# Binder env variables
 export BINDER_REPO_PATH="/Users/dibyendu.biswas/project/subs-pay/hs-core-widget-binder-query"
-
+export ERROR_LIB_LD_SDK_KEY="sdk-18a1d129-71f9-4334-bc80-a6c5a1c0eae3"
+export LD_SDK_KEY="sdk-2ef43f90-b990-4fe5-8d27-559e12b1a607"
+export ENTITLEMENT_LD_SDK_KEY="sdk-cf75ad83-f36e-4db5-a2b6-c14f2c45c6b7"
 
 # Go environment variables
 export GOPATH="${HOME}/go"
@@ -73,3 +75,5 @@ export GOBIN="${GOPATH}/bin"
 
 # Append GOPATH and GOBIN to PATH
 export PATH="${PATH}:${GOPATH}/bin"
+
+

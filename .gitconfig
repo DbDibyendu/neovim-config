@@ -1,6 +1,6 @@
 [user]
 	name = Dibi07
-	email = dibyendu.biswas@gmail.com
+	email = dibyendu.biswas@jiostar.com
 
 
 [alias]
@@ -12,3 +12,5 @@
     }; f"
 [core]
 	hooksPath = /Users/dibyendu.biswas/.git-global-hooks
+[url "git@github.com:"]
+	insteadOf = https://github.com/
