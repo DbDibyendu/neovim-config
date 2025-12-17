@@ -2,6 +2,8 @@
 
 ## Pre-requisites
 
+## Install Oh My ZSH : https://ohmyz.sh/
+
 ### Install [Homebrew](https://brew.sh/) as package manager
 
 You can download all the cli tools from here https://www.josean.com/posts/7-amazing-cli-tools
@@ -90,7 +92,7 @@ Netwr Shortcuts: https://gist.github.com/danidiaz/37a69305e2ed3319bfff9631175c5d
 Save without formatter in vim
 
 ```
-:noautocmd w
+:noa w
 ```
 
 For Binders Tests, You have to cd into the particular domain
