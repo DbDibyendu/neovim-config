@@ -68,12 +68,20 @@ export BINDER_REPO_PATH="/Users/dibyendu.biswas/project/subs-pay/hs-core-widget-
 export ERROR_LIB_LD_SDK_KEY="sdk-18a1d129-71f9-4334-bc80-a6c5a1c0eae3"
 export LD_SDK_KEY="sdk-2ef43f90-b990-4fe5-8d27-559e12b1a607"
 export ENTITLEMENT_LD_SDK_KEY="sdk-cf75ad83-f36e-4db5-a2b6-c14f2c45c6b7"
+export STATSIG_SDK_KEY="secret-eOZcMsJJvCO1D5pn7npb6pDwTuTCFkIn619ViJDb91z"
 
 # Go environment variables
 export GOPATH="${HOME}/go"
 export GOBIN="${GOPATH}/bin"
+export GOPRIVATE="github.com/hotstar/*"
+export GOPROXY="https://proxy.golang.org"
 
 # Append GOPATH and GOBIN to PATH
 export PATH="${PATH}:${GOPATH}/bin"
 
+
+## java paths
+# Set JAVA_HOME for Temurin 8
+export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+export PATH="$JAVA_HOME/bin:$PATH"
 

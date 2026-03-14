@@ -16,6 +16,9 @@ return {
 		require("telescope").load_extension("dap")
 		telescope.setup({
 			defaults = {
+				preview = {
+					treesitter = false,
+				},
 				path_display = function(_, path)
 					local parts = vim.split(path, "/")
 					local depth = 6 -- Maximum depth to display

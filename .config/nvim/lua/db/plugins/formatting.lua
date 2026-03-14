@@ -1,7 +1,6 @@
 return {
 	"stevearc/conform.nvim",
-	event = { "bufreadpre", "bufnewfile" },
-	-- Required for formatting
+	event = { "BufReadPre", "BufNewFile" },
 	config = function()
 		local conform = require("conform")
 
@@ -21,20 +20,24 @@ return {
 				graphql = { "prettier" },
 				liquid = { "prettier" },
 				lua = { "stylua" },
+				-- ✅ ADD THIS
 			},
+
 			format_on_save = {
-				lsp_fallback = true,
 				async = false,
 				timeout_ms = 1000,
+
+				-- ❌ disable LSP formatting fallback
+				lsp_fallback = false,
 			},
 		})
 
 		vim.keymap.set({ "n", "v" }, "<leader>mp", function()
 			conform.format({
-				lsp_fallback = true,
 				async = false,
 				timeout_ms = 1000,
+				lsp_fallback = false,
 			})
-		end, { desc = "format file or range (in visual mode)" })
+		end, { desc = "Format file or range" })
 	end,
 }
