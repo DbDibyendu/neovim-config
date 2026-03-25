@@ -7,14 +7,15 @@ return {
 		{ "folke/neodev.nvim", opts = {} },
 	},
 	config = function()
-		-- import lspconfig plugin
-		local lspconfig = require("lspconfig")
-
-		-- import mason_lspconfig plugin
-		local mason_lspconfig = require("mason-lspconfig")
-
-		-- import cmp-nvim-lsp plugin
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
+
+		-- Apply cmp capabilities to all servers globally (nvim 0.11 API)
+		vim.lsp.config("*", {
+			capabilities = cmp_nvim_lsp.default_capabilities(),
+		})
+
+		-- jdtls is managed by nvim-jdtls via ftplugin/java.lua
+		vim.lsp.enable("jdtls", false)
 
 		local keymap = vim.keymap -- for conciseness
 
@@ -92,5 +93,6 @@ return {
 			local hl = "DiagnosticSign" .. type
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 		end
+
 	end,
 }
