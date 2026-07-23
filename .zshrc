@@ -84,4 +84,6 @@ export PATH="${PATH}:${GOPATH}/bin"
 # Set JAVA_HOME for Temurin 8
 export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 export PATH="$JAVA_HOME/bin:$PATH"
+export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
 
+export CORALOGIX_API_KEY="cxup_34gIwW9EvbfJm6v1QA7LiCpBx2VPrk"
