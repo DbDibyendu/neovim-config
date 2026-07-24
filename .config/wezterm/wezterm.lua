@@ -61,6 +61,11 @@ config.keys = {
 		action = wezterm.action.ActivateTabRelative(1),
 	},
 	{
+		mods = "LEADER",
+		key = "t",
+		action = wezterm.action.ShowTabNavigator,
+	},
+	{
 		key = "v",
 		mods = "LEADER",
 		action = wezterm.action_callback(function(win, pane)
@@ -125,14 +130,20 @@ config.keys = {
 	},
 }
 
-for i = 0, 9 do
-	-- leader + number to activate that tab
+for i = 1, 9 do
+	-- leader + number to activate the matching one-based tab
 	table.insert(config.keys, {
 		key = tostring(i),
 		mods = "LEADER",
-		action = wezterm.action.ActivateTab(i),
+		action = wezterm.action.ActivateTab(i - 1),
 	})
 end
+
+table.insert(config.keys, {
+	key = "0",
+	mods = "LEADER",
+	action = wezterm.action.ActivateTab(9),
+})
 
 -- tab bar
 config.hide_tab_bar_if_only_one_tab = false
